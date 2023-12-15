@@ -35,7 +35,6 @@ export const SignUpContainer = styled.div`
         : null}
 `;
 
-
 export const SignInContainer = styled.div`
 position: absolute;
 top: 0;

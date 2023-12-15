@@ -20,7 +20,7 @@ const productData = [
   {
     id: 2,
     rating: 112,
-    productName: "Eiger Rhinos Rucksack 45L",
+    productName: "Carrier Arai Sindara 80L",
     imgUrl: img02,
     price: 15 ,
     description:
@@ -29,7 +29,7 @@ const productData = [
   {
     id: 3,
     rating: 112,
-    productName: "Eiger Rhinos Rucksack 45L",
+    productName: "Tracking Pool Eiger",
     imgUrl: img03,
     price: 15 ,
     description:
@@ -38,7 +38,7 @@ const productData = [
   {
     id: 4,
     rating: 112,
-    productName: "Eiger Rhinos Rucksack 45L",
+    productName: "Tracking Pool AREI",
     imgUrl: img04,
     price: 15 ,
     description:
@@ -47,7 +47,7 @@ const productData = [
   {
     id: 5,
     rating: 112,
-    productName: "Eiger Rhinos Rucksack 45L",
+    productName: "Tenda Bassic Pollux 2p Alloy",
     imgUrl: img05,
     price: 15 ,
     description:
@@ -56,7 +56,7 @@ const productData = [
   {
     id: 6,
     rating: 112,
-    productName: "Eiger Rhinos Rucksack 45L",
+    productName: "Tenda Eiger 4 Orang",
     imgUrl: img06,
     price: 15 ,
     description:

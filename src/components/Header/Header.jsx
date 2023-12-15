@@ -18,15 +18,15 @@ const navLinks = [
     path: "/products",
     display: "Products",
   },
-
-  // {
-  //   path: "/blogs",
-  //   display: "Blog",
-  // },
   {
     path: "/contact",
     display: "Contact",
   },
+  {
+    path: "/user",
+    display: "User Page",
+  },
+
 ];
 
 const Header = () => {

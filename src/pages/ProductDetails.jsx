@@ -33,23 +33,11 @@ const ProductDetails = () => {
                   <h6 className="rent__price fw-bold fs-4">
                     Rp. {singleProductItem.price}.000 / Day
                   </h6>
-
-                  <span className=" d-flex align-items-center gap-2">
-                    <span style={{ color: "#f9a826" }}>
-                      <i class="ri-star-s-fill"></i>
-                      <i class="ri-star-s-fill"></i>
-                      <i class="ri-star-s-fill"></i>
-                      <i class="ri-star-s-fill"></i>
-                      <i class="ri-star-s-fill"></i>
-                    </span>
-                    ({singleProductItem.rating} ratings)
-                  </span>
                 </div>
 
                 <p className="section__description">
                   {singleProductItem.description}
                 </p>
-
               </div>
             </Col>
 
@@ -62,7 +50,7 @@ const ProductDetails = () => {
 
             <Col lg="5" className="mt-5">
               <div className="payment__info mt-5">
-                <h5 className="mb-4 fw-bold ">Payment Information</h5>
+                <h5 className="mb-4 fw-bold ">Payment Method</h5>
                 <PaymentMethod />
               </div>
             </Col>
