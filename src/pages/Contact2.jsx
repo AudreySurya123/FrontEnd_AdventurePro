@@ -24,7 +24,7 @@ const socialLinks = [
   },
 ];
 
-const Contact = () => {
+const Contact2 = () => {
   const [id, setId] = useState("");
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
@@ -186,4 +186,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Contact2;

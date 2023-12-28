@@ -13,8 +13,8 @@ export const Container = styled.div`
   display: flex;
   align-items: center; /* Menengahkan elemen verticalmente */
   justify-content: center;
-  margin-bottom: 50px; /* Sesuaikan ini untuk menurunkan card form */
-  margin-top: 50px;
+  margin-bottom: 100px; /* Sesuaikan ini untuk menurunkan card form */
+  margin-top: 100px;
 `;
 
 

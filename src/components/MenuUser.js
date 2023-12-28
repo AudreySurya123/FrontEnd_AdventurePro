@@ -9,7 +9,7 @@ import Contact from "../pages/Contact";
 import Welcome from "../pages/Welcome";
 import UserPage from "../pages/UserPage"
 
-const Routers = () => {
+const MenuUser = () => {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/home" />} />
@@ -25,4 +25,4 @@ const Routers = () => {
   );
 };
 
-export default Routers;
+export default MenuUser;

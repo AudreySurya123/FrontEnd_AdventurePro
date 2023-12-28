@@ -31,7 +31,7 @@ const Footer = () => {
           <Col lg="4" md="4" sm="12">
             <div className="logo footer__logo">
               <h1>
-                <Link to="/welcome" className=" d-flex align-items-center gap-2">
+                <Link to="/loginadmin" className=" d-flex align-items-center gap-2">
                   <span>
                     AdventurePro
                   </span>

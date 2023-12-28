@@ -5,7 +5,7 @@ import Helmet from "../components/Helmet/Helmet";
 import AboutSection from "../components/UI/AboutSection";
 import "../styles/about.css";
 
-const About = () => {
+const About2 = () => {
   return (
     <Helmet title="About">
       <CommonSection title="About Us" />
@@ -14,4 +14,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default About2;
