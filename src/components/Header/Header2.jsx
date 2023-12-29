@@ -1,9 +1,21 @@
-import React, { useRef } from "react";
-
-import { Container, Row, Col } from "reactstrap";
+import React, { useState } from "react";
+import {
+  Container,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+} from "reactstrap";
 import { Link, NavLink } from "react-router-dom";
 import "../../styles/header.css";
 import logo from "../../assets/all-images/logo.png";
+import foto from "../../assets/all-images/account_circle.png";
+import Swal from "sweetalert2";
 
 const navLinks = [
   {
@@ -25,22 +37,39 @@ const navLinks = [
 ];
 
 const Header2 = () => {
-  const menuRef = useRef(null);
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [isCartModalOpen, setCartModalOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]); // Assuming cartItems is an array
 
-  const toggleMenu = () => menuRef.current.classList.toggle("menu__active");
+  const toggleDropdown = () => setDropdownOpen(!isDropdownOpen);
+  const toggleCartModal = () => setCartModalOpen(!isCartModalOpen);
 
   const handleLogout = () => {
-    // Tautan ke halaman login
-    const loginLink = "/home";
+    Swal.fire({
+      title: "Konfirmasi Logout",
+      text: "Anda yakin ingin logout?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ya, logout!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const loginLink = "/home";
 
-    // Mengarahkan pengguna ke halaman login
-    window.location.href = loginLink; // Anda juga dapat menggunakan <Link> dari React Router
+        // Mengarahkan pengguna ke halaman login
+        window.location.href = loginLink; // Anda juga dapat menggunakan <Link> dari React Router
+      }
+    });
+  };
+
+  const handleCartClick = () => {
+    // Open the cart modal or perform other actions related to the cart
+    toggleCartModal();
   };
 
   return (
     <header className="header">
-      {/* ========== main navigation =========== */}
-
       <div className="main__navbar">
         <Container>
           <div className="navigation__wrapper d-flex align-items-center justify-content-between">
@@ -50,11 +79,7 @@ const Header2 = () => {
                 <img src={logo} alt="logo" width="100" height="100" />
               </Link>
             </div>
-            <span className="mobile__menu">
-              <i class="ri-menu-line" onClick={toggleMenu}></i>
-            </span>
-
-            <div className="navigation" ref={menuRef} onClick={toggleMenu}>
+            <div className="navigation">
               <div className="menu">
                 {navLinks.map((item, index) => (
                   <NavLink
@@ -67,14 +92,65 @@ const Header2 = () => {
                     {item.display}
                   </NavLink>
                 ))}
-                <div className="search__box2">
-                  <button onClick={handleLogout}>Logout</button>
-                </div>
+                <Dropdown isOpen={isDropdownOpen} toggle={toggleDropdown}>
+                  <DropdownToggle nav className="nav__item">
+                    <div className="d-flex align-items-center">
+                      <p className="user-greeting ms-2 text-white mt-3" style={{ marginRight: "10px" }}>{`Hi, user`}</p>
+                      <img
+                        src={foto}
+                        alt="User"
+                        className="user-photo"
+                        width="30"
+                        height="30"
+                      />
+                    </div>
+                  </DropdownToggle>
+                  <DropdownMenu right>
+                    <DropdownItem>
+                      <NavLink
+                        to="/edit-profile"
+                        className="text-black"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Edit Profile
+                      </NavLink>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <span className="text-black" onClick={handleCartClick}>
+                        Cart
+                      </span>
+                    </DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem
+                      className="text-danger"
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
               </div>
             </div>
           </div>
         </Container>
       </div>
+
+      {/* Cart Modal */}
+      <Modal isOpen={isCartModalOpen} toggle={toggleCartModal}>
+        <ModalHeader toggle={toggleCartModal}>Shopping Cart</ModalHeader>
+        <ModalBody>
+          {/* Render cart items here */}
+          {cartItems.map((item, index) => (
+            <div key={index}>{/* Render individual cart item */}</div>
+          ))}
+        </ModalBody>
+        <ModalFooter>
+          <Button color="secondary" onClick={toggleCartModal}>
+            Close
+          </Button>
+          {/* Additional buttons or actions related to the cart */}
+        </ModalFooter>
+      </Modal>
     </header>
   );
 };

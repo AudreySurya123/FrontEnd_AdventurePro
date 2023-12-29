@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Slider from "react-slick";
 import HeroSlider from "../components/UI/HeroSlider";
 import Helmet from "../components/Helmet/Helmet";
 import axios from "axios";
 import { Container, Row, Col, Card } from "reactstrap";
 import { useNavigate } from "react-router-dom";
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../styles/product-item.css";
 
-const Home = () => {
+const Home2 = () => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
@@ -34,10 +34,9 @@ const Home = () => {
   };
 
   const handleDetailsClick = (productId) => {
-    navigate(`/produk/show/${productId}`);
+    navigate(`/produk2/show/${productId}`);
   };
 
-  // Slick settings
   const slickSettings = {
     infinite: true,
     slidesToShow: 3,
@@ -68,40 +67,42 @@ const Home = () => {
       </section>
       <section>
         <Container>
-          <Row className="mb-4">
+          <Row>
             <Col lg="12" className="text-center mb-5">
               <h6 className="section__subtitle">Our rental products</h6>
               <h2 className="section__title">Hot Offers (Swipe Product)</h2>
             </Col>
 
-            <Slider {...slickSettings}>
-              {products.map((product) => (
-                <div key={product.id} className="px-2">
-                  <Card className="car__item mb-4">
-                    <img
-                      src={`http://localhost:8080/image/${product.productImage}`}
-                      alt={product.productName}
-                      style={{ maxWidth: "100%", maxHeight: "100%" }}
-                      className="car__img"
-                    />
-                    <div className="car__item-content mt-4">
-                      <h4 className="section__title text-center">
-                        {product.productName}
-                      </h4>
-                      <h6 className="rent__price text-center mt-">
-                        {formatRupiah(product.productPrice)} day
-                      </h6>
-                      <button
-                        className="w-100 car__item-btn car__btn-rent text-white"
-                        onClick={() => handleDetailsClick(product.id)}
-                      >
-                        Details
-                      </button>
-                    </div>
-                  </Card>
-                </div>
-              ))}
-            </Slider>
+            <Row>
+              <Slider {...slickSettings}>
+                {products.map((product) => (
+                  <div key={product.id} className="px-2">
+                    <Card className="car__item mb-4">
+                      <img
+                        src={`http://localhost:8080/image/${product.productImage}`}
+                        alt={product.productName}
+                        style={{ maxWidth: "100%", maxHeight: "100%" }}
+                        className="car__img"
+                      />
+                      <div className="car__item-content mt-4">
+                        <h4 className="section__title text-center">
+                          {product.productName}
+                        </h4>
+                        <h6 className="rent__price text-center mt-">
+                          {formatRupiah(product.productPrice)} day
+                        </h6>
+                        <button
+                          className="w-100 car__item-btn car__btn-rent text-white"
+                          onClick={() => handleDetailsClick(product.id)}
+                        >
+                          Details
+                        </button>
+                      </div>
+                    </Card>
+                  </div>
+                ))}
+              </Slider>
+            </Row>
           </Row>
         </Container>
       </section>
@@ -109,4 +110,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Home2;

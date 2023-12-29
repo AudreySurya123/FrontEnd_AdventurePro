@@ -99,28 +99,6 @@ const AdminLayout = () => {
               key: "produk",
               icon: <AiOutlineShoppingCart className="fs-4" />,
               label: "Data Produk",
-              children: [
-                {
-                  key: "produk-tas",
-                  icon: <AiOutlineRight className="fs-4" />,
-                  label: "Tas Carrier",
-                },
-                {
-                  key: "produk-tenda",
-                  icon: <AiOutlineRight className="fs-4" />,
-                  label: "Tenda",
-                },
-                {
-                  key: "produk-sepatu",
-                  icon: <AiOutlineRight className="fs-4" />,
-                  label: "Sepatu",
-                },
-                {
-                  key: "produk-trackingpool",
-                  icon: <AiOutlineRight className="fs-4" />,
-                  label: "Tracking Pool",
-                },
-              ],
             },
             {
               key: "transaksi",
@@ -157,13 +135,6 @@ const AdminLayout = () => {
             }
           )}
           <div className="d-flex gap-4 align-items-center">
-            <div className="position-relative">
-              <IoIosNotifications className="fs-4" />
-              <span className="badge bg-info rounded-circle p-1 position-absolute">
-                3
-              </span>
-            </div>
-
             <div className="d-flex gap-3 align-items-center dropdown">
               <div>
               <FaRegUserCircle className="fs-4"/>

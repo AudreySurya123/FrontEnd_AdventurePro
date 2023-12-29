@@ -15,18 +15,9 @@ const navLinks = [
     display: "About",
   },
   {
-    path: "/products",
-    display: "Products",
-  },
-  {
     path: "/contact",
     display: "Contact",
   },
-  {
-    path: "/user",
-    display: "User Page",
-  },
-
 ];
 
 const Header = () => {

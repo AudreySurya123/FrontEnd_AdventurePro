@@ -6,8 +6,8 @@ import AdminLayout from "./components/Layout/AdminLayout";
 import SplashScreen from "./components/SplashScreen";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import ProductListing from "./pages/ProductListing";
 import ProductDetails from "./pages/ProductDetails";
+import ProductDetails2 from "./pages/ProductDetails2";
 import NotFound from "./pages/NotFound";
 import Contact from "./pages/Contact";
 import Welcome from "./pages/Welcome";
@@ -16,16 +16,14 @@ import Dashboard from "./pages/admin/Dashboard";
 import LoginAdmin from "./pages/admin/LoginAdmin";
 import DataUser from "./pages/admin/DataUser";
 import DataAdmin from "./pages/admin/DataAdmin";
-import ProdukTas from "./pages/admin/DataProduk/ProdukTas";
-import ProdukTrackingPool from "./pages/admin/DataProduk/ProdukTrackingPool";
-import ProdukSepatu from "./pages/admin/DataProduk/ProdukSepatu";
-import ProdukTenda from "./pages/admin/DataProduk/ProdukTenda";
+import Produk from "./pages/admin/Produk";
 import Sewa from "./pages/admin/Sewa";
 import Message from "./pages/admin/Message";
-import SetelahLogin from "./pages/SetelahLogin";
+import Home2 from "./pages/Home2";
 import About2 from "./pages/About2";
 import Contact2 from "./pages/Contact2";
 import ProductListing2 from "./pages/ProductListing2";
+import EditProfil from "./pages/EditProfil";
 
 function App() {
   return (
@@ -34,20 +32,20 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/products" element={<ProductListing />} />
-          <Route path="/products/:slug" element={<ProductDetails />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/produk/show/:productId" element={<ProductDetails />} />
           <Route path="/userpage" element={<UserPage />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/welcome" element={<Welcome />} />
         </Route>
         <Route path="/" element={<LayoutSetelahLogin />}>
-          <Route path="/home2" element={<SetelahLogin />} />
+          <Route path="/home2" element={<Home2 />} />
           <Route path="/about2" element={<About2 />} />
           <Route path="/products2" element={<ProductListing2 />} />
-          <Route path="/products/:slug" element={<ProductDetails />} />
+          <Route path="/produk2/show/:productId" element={<ProductDetails2 />} />
           <Route path="/contact2" element={<Contact2 />} />
           <Route path="/user" element={<UserPage />} />
+          <Route path="/edit-profile" element={<EditProfil />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/welcome" element={<Welcome />} />
         </Route>
@@ -56,10 +54,7 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path="data-admin" element={<DataAdmin />} />
           <Route path="data-penyewa" element={<DataUser />} />
-          <Route path="produk-tas" element={<ProdukTas />} />
-          <Route path="produk-tenda" element={<ProdukTenda />} />
-          <Route path="produk-sepatu" element={<ProdukSepatu />} />
-          <Route path="produk-trackingpool" element={<ProdukTrackingPool />} />
+          <Route path="produk" element={<Produk />} />
           <Route path="transaksi" element={<Sewa />} />
           <Route path="msg" element={<Message />} />
         </Route>

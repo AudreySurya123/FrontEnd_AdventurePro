@@ -5,7 +5,7 @@ import { Table } from "antd";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const ProdukTenda = () => {
+const Produk = () => {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -20,7 +20,7 @@ const ProdukTenda = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/produk-tenda/");
+      const response = await axios.get("http://localhost:8080/produk/");
       setProducts(response.data.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -33,7 +33,7 @@ const ProdukTenda = () => {
 
   const handleCreate = async (e) => {
     e.preventDefault();
-  
+
     if (
       productName === "" ||
       productDescription === "" ||
@@ -50,15 +50,15 @@ const ProdukTenda = () => {
         const headers = {
           "Content-Type": "multipart/form-data",
         };
-  
+
         const formData = new FormData();
         formData.append("productName", productName);
         formData.append("productDescription", productDescription);
         formData.append("productPrice", productPrice);
         formData.append("productImage", productImage);
-  
+
         await axios.post(
-          "http://localhost:8080/produk-tenda/",
+          "http://localhost:8080/produk/",
           formData,
           {
             formData,
@@ -67,23 +67,23 @@ const ProdukTenda = () => {
             headers: headers,
           }
         );
-  
-        // Gunakan rute yang benar untuk navigasi
-        navigate("/admin/produk-tenda");
-  
+
+        // Gunakan fungsi navigate dari useNavigate untuk navigasi
+        navigate("/admin/produk");
+
         // Tambahkan Swal.fire untuk memberi notifikasi bahwa data berhasil ditambahkan
         Swal.fire({
           icon: "success",
           title: "Sukses!",
           text: "Data berhasil ditambahkan",
         });
-  
-        // Setelah data tersimpan, tutup otomatis modal create
+
+        // Setelah data tersimpan, auto-close modal create
         handleCloseCreate();
-  
-        // Ambil data setelah menutup modal (opsional, tergantung pada kebutuhan)
+
+        // Fetch data setelah menutup modal (opsional, tergantung pada kebutuhan)
         fetchData();
-  
+
         setProductImage(null);
       } catch (error) {
         console.error("Error:", error);
@@ -111,7 +111,7 @@ const ProdukTenda = () => {
       }
 
       const putData = await axios.put(
-        `http://localhost:8080/produk-tenda/update/${id}`,
+        `http://localhost:8080/produk/update/${id}`,
         formData, // Mengirimkan FormData sebagai data permintaan
         {
           headers: {
@@ -153,7 +153,7 @@ const ProdukTenda = () => {
     event.preventDefault();
     try {
       const deleteData = await axios.delete(
-        `http://localhost:8080/delete/produk-tenda/${id}`
+        `http://localhost:8080/delete/produk/${id}`
       );
       Swal.fire({
         icon: "success",
@@ -280,7 +280,7 @@ const ProdukTenda = () => {
 
   return (
     <div className="body-flex">
-      <h1 className="py-1">Data Produk Tenda</h1>
+      <h1 className="py-1">Data Produk</h1>
       <div>
         <Button
           className="mb-3"
@@ -496,4 +496,4 @@ const ProdukTenda = () => {
   );
 };
 
-export default ProdukTenda;
+export default Produk;

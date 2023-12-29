@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Modal, ModalHeader, ModalBody } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
 import { useParams } from "react-router-dom";
+import BookingForm from "../components/UI/BookingForm";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 
 const ProductDetails = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -39,33 +39,6 @@ const ProductDetails = () => {
     }).format(amount);
   };
 
-  const handleBookingClick = () => {
-    if (!isLoggedIn()) {
-      showLoginAlert();
-    } else {
-      toggleModal();
-    }
-  };
-
-  const isLoggedIn = () => {
-    return false; 
-  };
-
-  const showLoginAlert = () => {
-    Swal.fire({
-      title: "Login Required",
-      text: "You need to log in to proceed.",
-      icon: "info",
-      showCancelButton: true,
-      confirmButtonText: "Login",
-      cancelButtonText: "Cancel",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        window.location.href = "/Welcome";
-      }
-    });
-  };
-
   return (
     <Container>
       {product && (
@@ -96,14 +69,11 @@ const ProductDetails = () => {
                       <button
                         className="btn btn-secondary"
                         style={{ marginRight: '10px' }}
-                        onClick={() => navigate("/home")}
+                        onClick={() => navigate("/products2")}
                       >
                         Back
                       </button>
-                      <button
-                        className="btn btn-primary"
-                        onClick={handleBookingClick}
-                      >
+                      <button className="btn btn-primary" onClick={toggleModal}>
                         Booking Now!
                       </button>
                     </div>
@@ -112,7 +82,13 @@ const ProductDetails = () => {
               </Row>
             </Container>
           </section>
-         
+          {/* BookingForm Modal */}
+          <Modal isOpen={isModalOpen} toggle={toggleModal}>
+            <ModalHeader toggle={toggleModal}>Booking Form</ModalHeader>
+            <ModalBody>
+              <BookingForm closeModal={toggleModal} />
+            </ModalBody>
+          </Modal>
         </Helmet>
       )}
     </Container>

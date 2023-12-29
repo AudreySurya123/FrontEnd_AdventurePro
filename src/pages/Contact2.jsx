@@ -79,7 +79,7 @@ const Contact2 = () => {
         setPesan("");
 
         // Gunakan fungsi navigate dari useNavigate untuk navigasi
-        navigate("/contact");
+        navigate("/contact2");
 
         // Tambahkan Swal.fire untuk memberi notifikasi bahwa data berhasil ditambahkan
         Swal.fire({

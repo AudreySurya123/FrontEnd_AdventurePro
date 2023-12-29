@@ -11,7 +11,7 @@ const UserPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/produk-tas/");
+        const response = await axios.get("http://localhost:8080/produk/");
         setProducts(response.data.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -30,7 +30,7 @@ const UserPage = () => {
 
   return (
     <Container>
-      <h1 className="py-1">Produk Tas</h1>
+      <h1 className="py-1">Data Produk</h1>
       <Row>
         {products.map((product) => (
           <Col lg="4" md="6" sm="12" key={product.id}>
